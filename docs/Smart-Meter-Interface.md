@@ -648,6 +648,34 @@ After unlocking the meter, you can run the following script
     3,=h     
     #  
     ```
+### DS100 Energy Meter (MODBus)
+Script to extract readings from B+GE-Tech [DS100 Series]([https://stromzähler.eu/Stromzaehler/Drehstromzaehler/fuer-Hutschiene-geeicht/]) devices (tested on DS100-30B). Manual with comprehensive documentation about all Modbus registers available [here](https://stromzähler.eu/media/77/95/eb/1704818482/DS100-Serie_0124_DE.pdf).
+
+??? summary "View script"
+    ```
+	>D
+	>B
+	->sensor53 r
+	>M 1
+	+1,18,m,0,9600,D100,19(22),0,01040400,01040402,01040404,01040410,01040412,01040414,01040416,0104041A,0104041C,0104041E,01040432,01040439,01040500,01040564,010405C8
+	1,010404UUuuUUuu@i0:1000,Voltage P1,V,Voltage_P1,3  
+	1,010404UUuuUUuu@i1:1000,Voltage P2,V,Voltage_P2,3  
+	1,010404UUuuUUuu@i2:1000,Voltage P3,V,Voltage_P3,3  
+	1,010404UUuuUUuu@i3:1000,Current P1,A,Current_P1,3  
+	1,010404UUuuUUuu@i4:1000,Current P2,A,Current_P2,3  
+	1,010404UUuuUUuu@i5:1000,Current P3,A,Current_P3,3
+	1,010404UUuuUUuu@i6:1000,Current N,A,Current_N,3
+	1,010404UUuuUUuu@i7:1,Leistung P1,W,Power_P1,0
+	1,010404UUuuUUuu@i8:1,Leistung P2,W,Power_P2,0
+	1,010404UUuuUUuu@i9:1,Leistung P3,W,Power_P3,0
+	1,010404UUuu@i10:10,Frequenz,Hz,F_P1,1
+	1,010404UUuu@i11:100,PowerFactor,W/VA,PF_C,3
+	1,=h<hr/>
+	1,010404UUuuUUuu@i12:100,Energie P1,kWh,E_P1,2 
+	1,010404UUuuUUuu@i13:100,Energie P2,kWh,E_P1,2 
+	1,010404UUuuUUuu@i14:100,Energie P3,kWh,E_P1,2 
+	#
+    ```
     
 ### DDM18SD (MODBus) 
 	
